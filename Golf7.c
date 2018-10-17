@@ -37,23 +37,23 @@ int main()
 
 
 //75% Golfed
-int main(number)
+int main(number,other)
 {
-	char *input=&number+9;
+	char*input=&number+9;
 	for(;~scanf("%s%*c",input);puts(""))
 		if(*input&1)
-			for(gets(input);*input;printf("%%%d$%c",number,*(input-1)))
-				for(number=1;*input++==*input;number++);
+			for(gets(input);*input;)
+				*input++^*input?printf("%%%d$%c",number,*(input-1)),number=1:number++;
 		else
-			for(;scanf("%*c%d%*c%c",&number, input)>1;)
-				for(;number--;putchar(*input));
+			for(;scanf("%*c%d%*c%c",&other,input)>0;)
+				for(;other--;putchar(*input));
 }
 
 
 //100% Golfed
-main(n){char *i=&n+9;for(;~scanf("%s%*c",i);puts(""))if(*i&1)for(gets(i);*i;printf("%%%d$%c",n,*(i-1)))for(n=1;*i++==*i;n++);else for(;scanf("%*c%d%*c%c",&n,i)>1;)for(;n--;putchar(*i));}
-/*
+main(n,o){char*i=&n+9;for(;~scanf("%s%*c",i);puts(""))if(*i&1)for(gets(i);*i;)*i++^*i?printf("%%%d$%c",n,*(i-1)),n=1:n++;else for(;scanf("%*c%d%*c%c",&o,i)>0;)for(;o--;putchar(*i));}
 
+/*
 Challenge:
 
 Current Challenge: Run Length Encoding
